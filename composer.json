@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "PromoCode\\WebAnvil\\": "src/WebAnvil/"
+            "WebAnvil\\": "src/WebAnvil/"
         }
     },
     "minimum-stability": "dev",
