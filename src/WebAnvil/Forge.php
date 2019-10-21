@@ -2,6 +2,8 @@
 
 namespace WebAnvil;
 
+use \Closure;
+
 abstract class Forge
 {
     private static $forges = [];
@@ -35,7 +37,7 @@ abstract class Forge
     public static function get(
         string $key,
         bool $throw_exception = true
-    ): ?\Closure
+    ): ?Closure
     {
         if ($throw_exception && empty(self::$forges[$key])) {
             throw new ForgeClosureNotFoundException(
@@ -46,7 +48,7 @@ abstract class Forge
         return self::$forges[$key] ?? null;
     }
 
-    public static function set(string $key, \Closure $closure): void
+    public static function set(string $key, Closure $closure): void
     {
         self::$forges[$key] = $closure;
     }
