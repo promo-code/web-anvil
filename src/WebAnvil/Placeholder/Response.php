@@ -2,11 +2,14 @@
 
 namespace WebAnvil\Placeholder;
 
-use WebAnvil\Interfaces\ActionInterface;
-
 class Response implements \WebAnvil\Interfaces\ResponseInterface
 {
-    public function respond(ActionInterface $action, $data = null)
+    /**
+     * @param \WebAnvil\Interfaces\ActionInterface $action
+     * @param array|null $data
+     * @return mixed
+     */
+    public function respond($action, $data = null)
     {
         return '';
     }

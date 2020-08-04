@@ -70,6 +70,27 @@ abstract class Forge
         return $response();
     }
 
+    public static function startTransaction()
+    {
+        $transaction = self::get('transaction_start');
+
+        return $transaction();
+    }
+
+    public static function commitTransaction()
+    {
+        $transaction = self::get('transaction_commit');
+
+        return $transaction();
+    }
+
+    public static function rollbackTransaction()
+    {
+        $transaction = self::get('transaction_rollback');
+
+        return $transaction();
+    }
+
     /**
      * @param string $message
      * @param \WebAnvil\Interfaces\ActionInterface $action
@@ -176,5 +197,20 @@ abstract class Forge
     public static function setErrorClosure(\Closure $response): void
     {
         self::set('error', $response);
+    }
+
+    public static function setTransactionStartClosure(\Closure $start)
+    {
+        self::set('transaction_start', $start);
+    }
+
+    public static function setTransactionCommitClosure(\Closure $commit)
+    {
+        self::set('transaction_commit', $commit);
+    }
+
+    public static function setTransactionRollbackClosure(\Closure $rollback)
+    {
+        self::set('transaction_rollback', $rollback);
     }
 }
