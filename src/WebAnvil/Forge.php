@@ -110,6 +110,15 @@ abstract class Forge
         return $response();
     }
 
+    public static function logMessage(string $message): void
+    {
+        try {
+            $logger = self::get('log');
+
+            $logger($message);
+        } catch (ForgeClosureNotFoundException $ignore) {}
+    }
+
     public static function logThrowable(\Throwable $e): void
     {
         try {
